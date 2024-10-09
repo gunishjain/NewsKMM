@@ -6,7 +6,7 @@
     <string name="headlines">Headlines</string>
     <string name="search">Search</string>
     <string name="bookmark">Bookmark</string>
-    <string name="theme">Theme</string>
+    <string name="theme">com.example.kmpnewsapp.utils.Theme</string>
     <string name="delete_bookmark">Delete bookmark</string>
     <string name="delete">Delete</string>
     <string name="delete_bookmark_description">Are you sure you want to delete bookmark?</string>
