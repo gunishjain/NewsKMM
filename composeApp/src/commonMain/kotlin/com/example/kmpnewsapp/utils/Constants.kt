@@ -1,6 +1,7 @@
 package com.example.kmpnewsapp.utils
 
 import com.example.kmpnewsapp.ui.navigation.BottomNavigationItem
+import com.example.kmpnewsapp.ui.navigation.MainRouteScreen
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.bookmark
 import kmp_news_app.composeapp.generated.resources.dark_mode
@@ -27,16 +28,16 @@ val navigationItemsLists = listOf(
     BottomNavigationItem(
         icon = Res.drawable.ic_headline,
         title = Res.string.headlines,
-        route = "headlines",
+        route = MainRouteScreen.Headline.route,
     ),
     BottomNavigationItem(
         icon = Res.drawable.ic_search,
         title = Res.string.search,
-        route = "search",
+        route = MainRouteScreen.Search.route,
     ),
     BottomNavigationItem(
         icon = Res.drawable.ic_bookmark_outlined,
         title = Res.string.bookmark,
-        route = "bookmark",
+        route = MainRouteScreen.Bookmark.route,
     ),
 )

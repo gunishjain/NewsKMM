@@ -1,27 +1,15 @@
 package com.example.kmpnewsapp
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import com.example.kmpnewsapp.theme.NewsAppTheme
-import com.example.kmpnewsapp.ui.MainScreen
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
-import kmp_news_app.composeapp.generated.resources.Res
-import kmp_news_app.composeapp.generated.resources.compose_multiplatform
+import androidx.compose.runtime.*
+import com.example.kmpnewsapp.graphs.RootNavGraph
+import com.example.kmpnewsapp.theme.NewsAppTheme
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
 fun App() {
     NewsAppTheme(null,true) {
-        MainScreen()
+        RootNavGraph()
     }
 }
