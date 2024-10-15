@@ -1,6 +1,5 @@
 package com.example.kmpnewsapp.ui
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,12 +16,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.text.font.FontWeight
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.kmpnewsapp.graphs.MainNavGraph
 import com.example.kmpnewsapp.ui.navigation.NewsBottomNavigationBar
+import com.example.kmpnewsapp.ui.navigation.SettingRouteScreen
 import com.example.kmpnewsapp.utils.navigationItemsLists
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.setting
@@ -37,7 +36,7 @@ fun MainScreen(
     val homeNavController = rememberNavController()
     val navBackStackEntry by homeNavController.currentBackStackEntryAsState()
 
-    val currentRoute by rememberSaveable(navBackStackEntry) { mutableStateOf(
+    val currentRoute by remember (navBackStackEntry) { mutableStateOf(
         navBackStackEntry?.destination?.route
     ) }
 
@@ -68,6 +67,7 @@ fun MainScreen(
             actions = {
                 IconButton(
                     onClick = {
+                        rootNavController.navigate(SettingRouteScreen.Setting.route)
                     }
                 ){
                     Icon(imageVector = Icons.Filled.Settings,

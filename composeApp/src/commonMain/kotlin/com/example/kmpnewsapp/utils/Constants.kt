@@ -1,5 +1,8 @@
 package com.example.kmpnewsapp.utils
 
+import com.example.kmpnewsapp.data.model.Article
+import com.example.kmpnewsapp.data.model.NewsResponse
+import com.example.kmpnewsapp.data.model.Source
 import com.example.kmpnewsapp.ui.navigation.BottomNavigationItem
 import com.example.kmpnewsapp.ui.navigation.MainRouteScreen
 import kmp_news_app.composeapp.generated.resources.Res
@@ -13,6 +16,7 @@ import kmp_news_app.composeapp.generated.resources.light_mode
 import kmp_news_app.composeapp.generated.resources.search
 import kmp_news_app.composeapp.generated.resources.system_default
 import org.jetbrains.compose.resources.StringResource
+import kotlin.random.Random
 
 enum class Theme(val title: StringResource) {
     SYSTEM_DEFAULT(Res.string.system_default),
@@ -41,3 +45,52 @@ val navigationItemsLists = listOf(
         route = MainRouteScreen.Bookmark.route,
     ),
 )
+
+val articles: List<Article> = listOf(
+    Article(
+        source = Source("dwa", "My news"),
+        author = "The author",
+        title = "This is the main news title headline. This is the main news title headline.",
+        description = "This is the main news description. This is the main news description. This is the main news description",
+        url = "",
+        urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
+        publishedAt = Random(100).nextInt().toString(),
+        content = "What is the content?"
+    ),
+    Article(
+        source = Source("dawdwa", "My news"),
+        author = "The author",
+        title = "This is the main news title headline. This is the main news title headline.",
+        description = "This is the main news description. This is the main news description. This is the main news description",
+        url = "",
+        urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
+        publishedAt = Random(100).nextInt().toString(),
+        content = "What is the content?"
+    ),
+    Article(
+        source = Source("dwakjyk", "My news"),
+        author = "The author",
+        title = "This is the main news title headline. This is the main news title headline.",
+        description = "This is the main news description. This is the main news description. This is the main news description",
+        url = "",
+        urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
+        publishedAt = Random(100).nextInt().toString(),
+        content = "What is the content?"
+    ),
+    Article(
+        source = Source("dwserfewa", "My news"),
+        author = "The author",
+        title = "This is the main news title headline. This is the main news title headline.",
+        description = "This is the main news description. This is the main news description. This is the main news description",
+        url = "",
+        urlToImage = "https://www.marketscreener.com/images/reuters/2024-03-05T144855Z_1_LYNXNPEK240IP_RTROPTP_3_GERMANY-TESLA-FIRE.JPG",
+        publishedAt = Random(100).nextInt().toString(),
+        content = "What is the content?"
+    )
+)
+val newsResponse = NewsResponse(
+    articles,
+    "dwe",
+    5
+)
+
