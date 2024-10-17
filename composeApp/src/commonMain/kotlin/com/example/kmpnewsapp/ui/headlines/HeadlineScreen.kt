@@ -1,17 +1,42 @@
 package com.example.kmpnewsapp.ui.headlines
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.sp
+
+import androidx.compose.runtime.*
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.kmpnewsapp.ui.common.ArticleListScreen
+import com.example.kmpnewsapp.ui.common.EmptyContent
+import com.example.kmpnewsapp.ui.common.ShimmerEffect
 import com.example.kmpnewsapp.utils.articles
 
 
 @Composable
 fun HeadlineScreen() {
-    ArticleListScreen(articles)
+
+    val headlineViewModel : HeadlineViewModel = viewModel { HeadlineViewModel()}
+    val uiState by headlineViewModel.newsStateFlow.collectAsState()
+
+    uiState.DisplayResult(
+
+        onIdle = {
+
+        },
+
+        onLoading =  {
+            ShimmerEffect()
+        },
+        onSuccess = {articleList->
+            if(articleList.isEmpty()){
+                EmptyContent("No News")
+            } else {
+                ArticleListScreen(articles)
+            }
+        },
+        onError = {
+            EmptyContent(it)
+        }
+
+
+    )
+
 
 }

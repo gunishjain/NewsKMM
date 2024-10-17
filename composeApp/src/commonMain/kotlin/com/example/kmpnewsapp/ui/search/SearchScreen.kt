@@ -10,8 +10,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.kmpnewsapp.theme.mediumPadding
 import com.example.kmpnewsapp.ui.common.ArticleListScreen
+import com.example.kmpnewsapp.ui.common.EmptyContent
+import com.example.kmpnewsapp.ui.common.ShimmerEffect
+import com.example.kmpnewsapp.ui.headlines.HeadlineViewModel
 import com.example.kmpnewsapp.ui.search.component.SearchBarScreen
 import com.example.kmpnewsapp.utils.articles
 
@@ -21,6 +25,10 @@ fun SearchScreen() {
     var searchQuery by rememberSaveable() {
         mutableStateOf("")
     }
+
+    val searchViewModel : SearchViewModel = viewModel { SearchViewModel() }
+    val uiState by searchViewModel.newsStateFlow.collectAsState()
+
 
     Column(
         verticalArrangement = Arrangement.spacedBy(mediumPadding)
@@ -33,10 +41,32 @@ fun SearchScreen() {
             onSearch = {query->
                 if(query.trim().isNotEmpty()){
                     println(query)
+                    searchViewModel.searchNews(query)
+
                 }
             }
         )
-        ArticleListScreen(articles)
+        uiState.DisplayResult(
+            onIdle = {
+                EmptyContent("Type to Search")
+            },
+
+            onLoading =  {
+                ShimmerEffect()
+            },
+            onSuccess = {articleList->
+                if(articleList.isEmpty()){
+                    EmptyContent("No News")
+                } else {
+                    ArticleListScreen(articles)
+                }
+            },
+            onError = {
+                EmptyContent(it)
+            }
+        )
+
+
     }
 
 }
