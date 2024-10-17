@@ -7,10 +7,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import com.example.kmpnewsapp.ui.common.ArticleListScreen
+import com.example.kmpnewsapp.utils.articles
 
 
 @Composable
 fun HeadlineScreen() {
-    ArticleListScreen()
+    ArticleListScreen(articles)
 
 }
