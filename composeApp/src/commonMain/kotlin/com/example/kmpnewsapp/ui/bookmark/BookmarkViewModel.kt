@@ -1,4 +1,4 @@
-package com.example.kmpnewsapp.ui.headlines
+package com.example.kmpnewsapp.ui.bookmark
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class HeadlineViewModel : ViewModel() {
+class BookmarkViewModel : ViewModel() {
 
     private val _newsStateFlow =
         MutableStateFlow<Resource<List<Article>>>(Resource.Loading)
@@ -27,8 +27,8 @@ class HeadlineViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             _newsStateFlow.emit(Resource.Loading)
             try {
-                val articleList = articles
-//                val articleList = emptyList<Article>()
+//                val articleList = articles
+                val articleList = emptyList<Article>()
                 _newsStateFlow.emit(Resource.Success(articleList))
 
             } catch (e: Exception) {
