@@ -13,12 +13,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.example.kmpnewsapp.data.model.Article
 import com.example.kmpnewsapp.theme.mediumPadding
 import com.example.kmpnewsapp.theme.xLargePadding
+import com.example.kmpnewsapp.utils.articles
+import com.example.kmpnewsapp.utils.shareLink
 import kmp_news_app.composeapp.generated.resources.Res
 import kmp_news_app.composeapp.generated.resources.ic_bookmark_outlined
 import kmp_news_app.composeapp.generated.resources.ic_browse
@@ -33,6 +36,8 @@ fun ArticleDetailScreen(
     navController: NavController,
     currentArticle: Article,
 ) {
+
+    val uriHandler = LocalUriHandler.current
 
     Scaffold(
         topBar = {
@@ -57,7 +62,7 @@ fun ArticleDetailScreen(
                 },
                 actions = {
                     IconButton(onClick = {
-                        //TODO: Add share link code
+                        shareLink(currentArticle.url)
                     }) {
                         Icon(
                             imageVector = Icons.Filled.Share,
@@ -65,7 +70,7 @@ fun ArticleDetailScreen(
                         )
                     }
                     IconButton(onClick = {
-
+                        uriHandler.openUri(currentArticle.url)
                     }) {
                         Icon(
                             painter = painterResource(Res.drawable.ic_browse),
