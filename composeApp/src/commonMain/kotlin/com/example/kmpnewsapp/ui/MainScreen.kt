@@ -19,7 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.kmpnewsapp.graphs.MainNavGraph
+import com.example.kmpnewsapp.ui.navigation.graphs.MainNavGraph
 import com.example.kmpnewsapp.ui.navigation.NewsBottomNavigationBar
 import com.example.kmpnewsapp.ui.navigation.SettingRouteScreen
 import com.example.kmpnewsapp.utils.navigationItemsLists

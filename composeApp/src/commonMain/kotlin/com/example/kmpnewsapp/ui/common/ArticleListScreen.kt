@@ -7,16 +7,19 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.navigation.NavController
 import com.example.kmpnewsapp.data.model.Article
 import com.example.kmpnewsapp.theme.mediumPadding
 import com.example.kmpnewsapp.theme.xLargePadding
+import com.example.kmpnewsapp.ui.navigation.NewsRouteScreen
 import com.example.kmpnewsapp.utils.Type
 import com.example.kmpnewsapp.utils.getType
 import com.example.kmpnewsapp.utils.randomUUIDStr
 
 @Composable
 fun ArticleListScreen(
-     articleList : List<Article>
+     articleList : List<Article>,
+     navController: NavController
 ) {
     val isDesktop  = remember {
         getType() == Type.Desktop
@@ -32,7 +35,7 @@ fun ArticleListScreen(
             it.publishedAt + randomUUIDStr()
         }) { item ->
             ArticleItem(article = item, onClick = {
-
+                navController.navigate(NewsRouteScreen.NewsDetail.route)
             })
         }
     }

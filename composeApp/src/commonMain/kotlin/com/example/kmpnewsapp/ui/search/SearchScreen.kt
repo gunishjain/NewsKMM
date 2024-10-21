@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.kmpnewsapp.theme.mediumPadding
 import com.example.kmpnewsapp.ui.common.ArticleListScreen
 import com.example.kmpnewsapp.ui.common.EmptyContent
@@ -20,7 +21,7 @@ import com.example.kmpnewsapp.ui.search.component.SearchBarScreen
 import com.example.kmpnewsapp.utils.articles
 
 @Composable
-fun SearchScreen() {
+fun SearchScreen(navController: NavController) {
 
     var searchQuery by rememberSaveable() {
         mutableStateOf("")
@@ -58,7 +59,7 @@ fun SearchScreen() {
                 if(articleList.isEmpty()){
                     EmptyContent("No News")
                 } else {
-                    ArticleListScreen(articles)
+                    ArticleListScreen(articles,navController)
                 }
             },
             onError = {

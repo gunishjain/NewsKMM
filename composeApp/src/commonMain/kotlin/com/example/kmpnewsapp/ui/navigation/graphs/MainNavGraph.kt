@@ -1,4 +1,4 @@
-package com.example.kmpnewsapp.graphs
+package com.example.kmpnewsapp.ui.navigation.graphs
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,15 +28,15 @@ fun MainNavGraph(
         startDestination = MainRouteScreen.Headline.route
     ) {
         composable(route = MainRouteScreen.Headline.route) {
-            HeadlineScreen()
+            HeadlineScreen(rootNavController)
         }
 
         composable(route = MainRouteScreen.Search.route) {
-            SearchScreen()
+            SearchScreen(rootNavController)
         }
 
         composable(route = MainRouteScreen.Bookmark.route) {
-            BookMarkScreen()
+            BookMarkScreen(rootNavController)
         }
     }
 
