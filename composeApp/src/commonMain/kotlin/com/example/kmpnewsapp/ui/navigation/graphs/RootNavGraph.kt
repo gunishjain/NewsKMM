@@ -11,11 +11,14 @@ import com.example.kmpnewsapp.ui.navigation.Graph
 import com.example.kmpnewsapp.ui.navigation.NewsRouteScreen
 import com.example.kmpnewsapp.ui.navigation.SettingRouteScreen
 import com.example.kmpnewsapp.ui.settings.SettingScreen
+import com.example.kmpnewsapp.ui.settings.SettingViewModel
 import com.example.kmpnewsapp.utils.articles
 
 
 @Composable
-fun RootNavGraph() {
+fun RootNavGraph(
+    settingViewModel: SettingViewModel
+) {
 
     val rootNavController = rememberNavController()
     NavHost(
@@ -29,7 +32,7 @@ fun RootNavGraph() {
         }
 
         composable(route = SettingRouteScreen.Setting.route) {
-            SettingScreen(rootNavController)
+            SettingScreen(rootNavController,settingViewModel)
         }
 
         composable(route = NewsRouteScreen.NewsDetail.route) {

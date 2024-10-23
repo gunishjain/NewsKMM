@@ -46,6 +46,9 @@ val navigationItemsLists = listOf(
     ),
 )
 
+
+const val DataStoreFileName = "setting.preferences_pb"
+
 val articles: List<Article> = listOf(
     Article(
         source = Source("dwa", "My news"),

@@ -62,6 +62,9 @@ kotlin {
             //viewmodel compose
             implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
 
+            //dataStore
+            implementation(libs.androidx.data.store.core)
+
 
 
 

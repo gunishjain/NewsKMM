@@ -2,6 +2,8 @@ package com.example.kmpnewsapp.utils
 
 import android.app.Activity
 import android.content.Intent
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import java.util.UUID
 
 actual fun randomUUIDStr(): String {
@@ -32,3 +34,13 @@ fun setActivityProvider(provider :() -> Activity){
     activityProvider = provider
 }
 
+actual fun dataStorePreference(): DataStore<Preferences> {
+    return AppSetting.getDataStore(
+        producerPath = {
+            activityProvider.invoke().filesDir
+                .resolve(DataStoreFileName)
+                .absolutePath
+
+        }
+    )
+}

@@ -30,11 +30,13 @@ import org.jetbrains.compose.resources.stringResource
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingScreen(
-    rootNavController: NavHostController
+    rootNavController: NavHostController,
+    settingViewModel: SettingViewModel
 ) {
 
     var showThemeSelectionDialog by remember { mutableStateOf(false) }
     var showDeleteBookmarkArticleDialog by remember { mutableStateOf(false) }
+    val currentTheme by settingViewModel.currentTheme.collectAsState()
 
     when {
         showDeleteBookmarkArticleDialog -> {
@@ -53,11 +55,11 @@ fun SettingScreen(
         showThemeSelectionDialog -> {
             ThemeSelectionDialog(
                 onThemeChange = {
-                    //TODO: Change Theme Implementation
+                    settingViewModel.changeThemeMode(it.name)
                     showThemeSelectionDialog = false
                 },
                 onDismissRequest = { showThemeSelectionDialog = false },
-                currentTheme = Theme.LIGHT_MODE.name
+                currentTheme = currentTheme?: Theme.DARK_MODE.name
             )
         }
     }
