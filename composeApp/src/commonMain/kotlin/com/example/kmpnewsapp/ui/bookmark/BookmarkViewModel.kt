@@ -27,8 +27,7 @@ class BookmarkViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             _newsStateFlow.emit(Resource.Loading)
             try {
-//                val articleList = articles
-                val articleList = emptyList<Article>()
+                val articleList = articles
                 _newsStateFlow.emit(Resource.Success(articleList))
 
             } catch (e: Exception) {

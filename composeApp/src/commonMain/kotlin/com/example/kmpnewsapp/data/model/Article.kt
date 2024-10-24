@@ -1,12 +1,26 @@
 package com.example.kmpnewsapp.data.model
 
+
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+
+@Serializable
 data class Article(
-    val author: String?,
+    @SerialName("author")
+    val author: String? = null,
+    @SerialName("content")
     val content: String?,
-    val description: String,
+    @SerialName("description")
+    val description: String?,
+    @SerialName("publishedAt")
     val publishedAt: String,
+    @SerialName("source")
     val source: Source,
+    @SerialName("title")
     val title: String,
+    @SerialName("url")
     val url: String,
-    val urlToImage: String
+    @SerialName("urlToImage")
+    val urlToImage: String?
 )
