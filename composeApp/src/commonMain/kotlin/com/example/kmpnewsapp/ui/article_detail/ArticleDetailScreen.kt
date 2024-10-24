@@ -129,7 +129,7 @@ fun ArticleDetailScreen(
             currentArticle.description.let { content ->
                 item {
                     Text(
-                        text = content!!,
+                        text = content,
                         style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.secondary
                     )

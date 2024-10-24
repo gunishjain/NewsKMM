@@ -48,9 +48,6 @@ val navigationItemsLists = listOf(
 
 
 const val DataStoreFileName = "setting.preferences_pb"
-const val BASE_URL = "https://newsapi.org/v2/"
-
-const val API_KEY = "2f8b8962d0384575af31c5ffe7f2c903"
 
 val articles: List<Article> = listOf(
     Article(

@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.kotlinx.serialization)
 }
 
 kotlin {
@@ -66,16 +65,6 @@ kotlin {
             //dataStore
             implementation(libs.androidx.data.store.core)
 
-            //Kermit  for logging
-            implementation(libs.kermit)
-
-            //ktor
-            implementation(libs.ktor.core)
-            implementation(libs.ktor.json)
-            implementation(libs.ktor.logging)
-            implementation(libs.ktor.negotiation)
-            implementation(libs.kotlinx.serialization.json)
-
 
 
 
@@ -86,13 +75,7 @@ kotlin {
 
             // ktor
             implementation(libs.ktor.client.okhttp)
-            implementation(libs.kotlinx.coroutines.swing)
 
-        }
-
-        iosMain.dependencies {
-            // Ktor
-            implementation(libs.ktor.client.darwin)
         }
     }
 }

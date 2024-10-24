@@ -19,8 +19,7 @@ navigationCompose = "2.8.0-alpha02"
 coil3 = "3.0.0-alpha06"
 ktor = "2.3.12"
 androidx-data-store = "1.1.1"
-kotlinx-serialization = "1.7.3"
-kermit = "2.0.4"
+
 
 
 
@@ -52,8 +51,7 @@ ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 androidx-data-store-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "androidx-data-store" }
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
-kermit = {module = "co.touchlab:kermit", version.ref = "kermit"}
+
 
 
 
@@ -63,4 +61,3 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
