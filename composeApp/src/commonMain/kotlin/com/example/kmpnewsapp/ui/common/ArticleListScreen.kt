@@ -15,6 +15,8 @@ import com.example.kmpnewsapp.ui.navigation.NewsRouteScreen
 import com.example.kmpnewsapp.utils.Type
 import com.example.kmpnewsapp.utils.getType
 import com.example.kmpnewsapp.utils.randomUUIDStr
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 @Composable
 fun ArticleListScreen(
@@ -35,6 +37,11 @@ fun ArticleListScreen(
             it.publishedAt + randomUUIDStr()
         }) { item ->
             ArticleItem(article = item, onClick = {
+                val articleStr = Json.encodeToString(item)
+                navController.currentBackStackEntry?.savedStateHandle?.set(
+                    key = "article",
+                    value = articleStr
+                )
                 navController.navigate(NewsRouteScreen.NewsDetail.route)
             })
         }

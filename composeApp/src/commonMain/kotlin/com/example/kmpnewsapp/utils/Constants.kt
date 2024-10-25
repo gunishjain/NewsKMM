@@ -1,5 +1,6 @@
 package com.example.kmpnewsapp.utils
 
+import com.example.kmpnewsapp.BuildKonfig
 import com.example.kmpnewsapp.data.model.Article
 import com.example.kmpnewsapp.data.model.NewsResponse
 import com.example.kmpnewsapp.data.model.Source
@@ -48,6 +49,7 @@ val navigationItemsLists = listOf(
 
 
 const val DataStoreFileName = "setting.preferences_pb"
+const val BASE_URL = "https://newsapi.org/v2/"
 
 val articles: List<Article> = listOf(
     Article(

@@ -2,7 +2,6 @@ package com.example.kmpnewsapp.ui.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
@@ -15,12 +14,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import coil3.compose.AsyncImage
 import com.example.kmpnewsapp.data.model.Article
 import com.example.kmpnewsapp.theme.imageSize
 import com.example.kmpnewsapp.theme.xSmallPadding
 import com.example.kmpnewsapp.theme.xxSmallPadding
+import kmp_news_app.composeapp.generated.resources.Res
+import kmp_news_app.composeapp.generated.resources.logo
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun ArticleItem(
@@ -35,13 +39,16 @@ fun ArticleItem(
         Row(
             horizontalArrangement = Arrangement.spacedBy(xSmallPadding)
         ) {
-            Box(
-              modifier = Modifier
-                  .size(imageSize)
-                  .clip(MaterialTheme.shapes.large)
-                  .background(Color.Gray)
+            AsyncImage(
+                modifier = Modifier
+                    .size(imageSize)
+                    .clip( RoundedCornerShape(10))
+                    .background(Color.Gray),
+                model = article.urlToImage,
+                error = painterResource(Res.drawable.logo),
+                contentScale = ContentScale.Crop,
+                contentDescription = null
             )
-
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.spacedBy(xxSmallPadding)
