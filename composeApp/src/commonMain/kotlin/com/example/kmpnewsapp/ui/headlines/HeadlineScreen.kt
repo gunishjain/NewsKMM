@@ -8,6 +8,10 @@ import com.example.kmpnewsapp.data.repository.OnlineNewsRepository
 import com.example.kmpnewsapp.ui.common.ArticleListScreen
 import com.example.kmpnewsapp.ui.common.EmptyContent
 import com.example.kmpnewsapp.ui.common.ShimmerEffect
+import kmp_news_app.composeapp.generated.resources.Res
+import kmp_news_app.composeapp.generated.resources.ic_browse
+import kmp_news_app.composeapp.generated.resources.no_news
+import org.jetbrains.compose.resources.stringResource
 
 
 @Composable
@@ -27,13 +31,25 @@ fun HeadlineScreen(navController: NavController) {
         },
         onSuccess = {articleList->
             if(articleList.isEmpty()){
-                EmptyContent("No News")
+                EmptyContent(
+                    message = stringResource(Res.string.no_news),
+                    icon = Res.drawable.ic_browse,
+                    onRetryBtnClick = {
+                        headlineViewModel.getHeadlines()
+                    }
+                )
             } else {
                 ArticleListScreen(articleList,navController)
             }
         },
         onError = {
-            EmptyContent(it)
+            EmptyContent(
+                message = it,
+                icon = Res.drawable.ic_browse,
+                onRetryBtnClick = {
+                    headlineViewModel.getHeadlines()
+                }
+            )
         }
 
 

@@ -10,6 +10,11 @@ import com.example.kmpnewsapp.ui.common.EmptyContent
 import com.example.kmpnewsapp.ui.common.ShimmerEffect
 import com.example.kmpnewsapp.ui.headlines.HeadlineViewModel
 import com.example.kmpnewsapp.utils.articles
+import kmp_news_app.composeapp.generated.resources.Res
+import kmp_news_app.composeapp.generated.resources.ic_browse
+import kmp_news_app.composeapp.generated.resources.ic_network_error
+import kmp_news_app.composeapp.generated.resources.no_news
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun BookMarkScreen(navController: NavController) {
@@ -28,13 +33,25 @@ fun BookMarkScreen(navController: NavController) {
         },
         onSuccess = {articleList->
             if(articleList.isEmpty()){
-                EmptyContent("No News")
+                EmptyContent(
+                    message = stringResource(Res.string.no_news),
+                    icon = Res.drawable.ic_browse,
+                    onRetryBtnClick = {
+
+                    }
+                )
             } else {
                 ArticleListScreen(articles,navController)
             }
         },
         onError = {
-            EmptyContent(it)
+            EmptyContent(
+                message = stringResource(Res.string.no_news),
+                icon = Res.drawable.ic_network_error,
+                onRetryBtnClick = {
+
+                }
+            )
         }
 
 

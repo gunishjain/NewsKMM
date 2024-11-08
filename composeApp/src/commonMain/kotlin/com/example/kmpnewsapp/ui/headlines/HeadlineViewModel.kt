@@ -28,7 +28,7 @@ class HeadlineViewModel(
         getHeadlines()
     }
 
-    private fun getHeadlines() {
+    fun getHeadlines() {
         viewModelScope.launch(Dispatchers.IO) {
             _newsStateFlow.emit(Resource.Loading)
             try {

@@ -12,6 +12,11 @@ import com.example.kmpnewsapp.ui.common.ArticleListScreen
 import com.example.kmpnewsapp.ui.common.EmptyContent
 import com.example.kmpnewsapp.ui.common.ShimmerEffect
 import com.example.kmpnewsapp.ui.search.component.SearchBarScreen
+import kmp_news_app.composeapp.generated.resources.Res
+import kmp_news_app.composeapp.generated.resources.ic_browse
+import kmp_news_app.composeapp.generated.resources.no_news
+import kmp_news_app.composeapp.generated.resources.type_to_search
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun SearchScreen(navController: NavController) {
@@ -34,15 +39,17 @@ fun SearchScreen(navController: NavController) {
             },
             onSearch = {query->
                 if(query.trim().isNotEmpty()){
-                    println(query)
                     searchViewModel.searchNews(query)
-
                 }
             }
         )
         uiState.DisplayResult(
             onIdle = {
-                EmptyContent("Type to Search")
+                EmptyContent(
+                    message = stringResource(Res.string.type_to_search),
+                    icon = Res.drawable.ic_browse,
+                    isOnRetryBtnVisible = false
+                )
             },
 
             onLoading =  {
@@ -50,13 +57,24 @@ fun SearchScreen(navController: NavController) {
             },
             onSuccess = {articleList->
                 if(articleList.isEmpty()){
-                    EmptyContent("No News")
+                    EmptyContent(
+                        message = stringResource(Res.string.no_news),
+                        icon = Res.drawable.ic_browse,
+                    )
                 } else {
                     ArticleListScreen(articleList,navController)
                 }
             },
             onError = {
-                EmptyContent(it)
+                EmptyContent(
+                    message = it,
+                    icon = Res.drawable.ic_browse,
+                    onRetryBtnClick = {
+                        if(searchQuery.trim().isNotEmpty()){
+                            searchViewModel.searchNews(searchQuery)
+                        }
+                    }
+                )
             }
         )
 
