@@ -11,9 +11,12 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.buildkonfig)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
+
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -32,6 +35,10 @@ kotlin {
             baseName = "ComposeApp"
             isStatic = true
         }
+    }
+
+    sourceSets.commonMain {
+        kotlin.srcDir("build/generated/ksp/metadata")
     }
     
     sourceSets {
@@ -77,6 +84,11 @@ kotlin {
             implementation(libs.ktor.logging)
             implementation(libs.ktor.negotiation)
             implementation(libs.kotlinx.serialization.json)
+
+            //room+ sqlite
+            //Room
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
 
 
 
@@ -134,8 +146,13 @@ android {
         debugImplementation(compose.uiTooling)
     }
 }
-dependencies {
+room {
+    schemaDirectory("$projectDir/schemas")
 }
+dependencies {
+    add("kspCommonMainMetadata", libs.room.compiler)
+}
+
 
 compose.desktop {
     application {
@@ -166,5 +183,12 @@ buildkonfig {
             "API_KEY",
             localProperties["API_KEY"]?.toString() ?: "",
         )
+    }
+}
+
+
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
+    if (name != "kspCommonMainKotlinMetadata" ) {
+        dependsOn("kspCommonMainKotlinMetadata")
     }
 }
